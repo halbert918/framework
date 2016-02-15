@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.schemea.hyb.com/schema/job"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            targetNamespace="http://www.schemea.hyb.com/schema/job"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <!-- 配置job -->
+    <xsd:element name="job">
+        <xsd:annotation>
+            <xsd:documentation>
+                <![CDATA[ 任务job对象 ]]>
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="process" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            <![CDATA[ 引用子节点 minOccurs至少需要配置数量]]>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+
+            <xsd:attribute name="id" type="xsd:ID" use="required">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[ 唯一ID ]]>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute name="class" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[ 指定的class路径 ]]>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute name="ref" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[ ref引用对象 ]]>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute name="init-method" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        <![CDATA[ job对象创建后调用初始化方法。 ]]>
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="process">
+        <xsd:annotation>
+            <xsd:documentation>
+                <![CDATA[ 流程节点对象 ]]>
+            </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="process" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            <![CDATA[ 引用子节点 minOccurs至少需要配置数量]]>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:ID" use="required"></xsd:attribute>
+            <xsd:attribute name="class" type="xsd:string"></xsd:attribute>
+            <xsd:attribute name="ref" type="xsd:string"></xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

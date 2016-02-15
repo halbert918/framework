@@ -1,0 +1,23 @@
+1、redis配置
+--在resources目录下创建redis.properties
+  #host=192.168.63.173
+  #port=6379
+  #maxTotal=100
+  #maxWaitMillis=6000
+
+2、web.xml配置
+  <filter>
+    <filter-name>sessionFilter</filter-name>
+    <filter-class>com.framework.distribute.session.servlet.DistributedSessionFilter</filter-class>
+    <!-- 配置分布式存储session的实现，默认RedisSessionStore -->
+    <!--
+    <init-param>
+        <param-name>storeClass</param-name>
+        <param-value>com.framework.distribute.session.store.RedisSessionStore</param-value>
+    </init-param>
+    -->
+  </filter>
+  <filter-mapping>
+    <filter-name>sessionFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>

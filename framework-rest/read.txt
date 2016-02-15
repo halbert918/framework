@@ -1,0 +1,6 @@
+1、rest配置
+--在resources目录下创建rest.properties
+  #rest.connect.timeout=5000
+  #rest.socket.timeout=10000
+  #client.pool.maxTotal=200
+  #client.default.maxPerRoute=20
