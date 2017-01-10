@@ -1,2 +1,5 @@
-http\://www.schemea.hyb.com/schema/job/job.xsd=
+#http\://www.schemea.hyb.com/schema/job/job.xsd=com/framework/proccess/parser/job.xsd
+http\://www.schemea.hyb.com/schema/job/job.xsd=META-INF/job.xsd
+http\://www.luyee.com/bat/schema/people.xsd=META-INF/people.xsd
+
 

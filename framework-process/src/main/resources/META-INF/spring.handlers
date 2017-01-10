@@ -1,1 +1,2 @@
 http\://www.schemea.hyb.com/schema/job=com.framework.process.parser.JobNamespaceHandler
+http\://www.luyee.com/bat/schema/people=com.cnblogs.ericlin.spring.schema.StudentNamespaceHandler

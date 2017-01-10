@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.schemea.hyb.com/schema/job"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	 xmlns:people="http://www.luyee.com/bat/schema/people"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+         http://www.schemea.hyb.com/schema/job http://www.schemea.hyb.com/schema/job/job.xsd
+         http://www.luyee.com/bat/schema/people http://www.luyee.com/bat/schema/people.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+	default-autowire="byName">
+
+	<job id="simpleJob" class="com.framework.process.SimpleJob">
+		<context name="jobContext" class="com.framework.process.DefaultJobContext">
+			<node name="firstNode" class="com.process.demo.node.FirstNode">
+				<decision name="dec" decide="decider" />
+				<node name="nextNode" class="com.process.demo.node.NextNode">
+					<node name="next2Node" class="com.process.demo.node.Next2Node">
+						<node name="resultNode" class="com.process.demo.node.ResultNode" />
+					</node>
+				</node>
+				<node name="decider" class="com.process.demo.node.DecierNode">
+					<node name="nextNode" class="com.process.demo.node.NextNode">
+						<node name="resultNode" class="com.process.demo.node.ResultNode" />
+					</node>
+				</node>
+			</node>
+		</context>
+	</job>
+
+	<job id="simpleJob1" class="com.framework.process.SimpleJob">
+		<context name="jobContext" class="com.framework.process.DefaultJobContext">
+			<node name="firstNode" class="com.process.demo.node.FirstNode">
+				<node name="resultNode" class="com.process.demo.node.ResultNode" />
+			</node>
+		</context>
+	</job>
+
+</beans:beans>

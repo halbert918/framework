@@ -4,33 +4,48 @@ package com.framework.process;
  * @Vesrion 1.0
  * @Author heyinbo
  * @Date 2015/8/6
- * @Description 请求任务
+ * @Description Job——job抽象
  */
 public abstract class Job {
-
     /**
-     * job名称
+     * job id
+     */
+    private String id;
+    /**
+     * job name
      */
     private String name;
     /**
-     * 上下文
+     * job 容器
      */
-    private Context context;
+    private JobContext jobContext;
 
+    /**
+     * start execute
+     */
+    public abstract void execute();
 
-
-    public Job(){
-        this(null);
+    public JobContext getJobContext() {
+        return this.jobContext;
     }
 
-    public Job(String name) {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * 获取当前job的名称
-     * @return
-     */
-    public abstract String getName();
-
+    public void setJobContext(JobContext jobContext) {
+        this.jobContext = jobContext;
+    }
 }

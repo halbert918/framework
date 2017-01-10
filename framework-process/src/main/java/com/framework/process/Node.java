@@ -1,59 +1,38 @@
 package com.framework.process;
 
-import java.util.List;
-
 /**
  * @Vesrion 1.0
  * @Author heyinbo
  * @Date 2015/8/6
- * @Description 当前流程节点名称
+ * @Description Node——Node抽象
  */
 public abstract class Node {
-
     /**
-     * 当前节点名称
+     * id
+     */
+    private String id;
+    /**
+     * name
      */
     private String name;
     /**
-     * 子节点
+     * 是否根节点
      */
-    private List<Node> nodes;
-    /**
-     * 父节点
-     */
-    private Node parentNode = null;
+    private boolean isRoot;
 
     /**
-     *
+     * 调用链
      * @param context
+     * @throws Exception
      */
-    public abstract void invoke(Context context);
+    abstract void invoke(JobContext context) throws Exception;
 
-    public void next() {
-
+    public String getId() {
+        return id;
     }
 
-    public abstract Node next(String name);
-
-    public abstract Node child();
-
-    public abstract Node child(String name);
-
-    public abstract Node prev();
-
-
-    /**
-     * 获取子节点
-     * @param name
-     * @return
-     */
-    public Node getChild(String name) {
-        for(Node node : nodes) {
-            if(name.equals(node.getName())) {
-                return node;
-            }
-        }
-        return null;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -64,11 +43,17 @@ public abstract class Node {
         this.name = name;
     }
 
-    public List<Node> getNodes() {
-        return nodes;
+    public boolean isRoot() {
+        return isRoot;
     }
 
-    public void setNodes(List<Node> nodes) {
-        this.nodes = nodes;
+    public void setRoot(boolean root) {
+        isRoot = root;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + " [id=" + this.id + ", name=" + this.name
+                + "]";
     }
 }
