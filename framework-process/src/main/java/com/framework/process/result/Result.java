@@ -5,7 +5,6 @@ import java.io.Serializable;
 /**
  * @Vesrion 1.0
  * @Author heyinbo
- * @Date 2015/8/6
  * @Description Result——所有的jobContext中的Result都应实现接口
  */
 public interface Result extends Serializable {

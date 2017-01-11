@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Halbert on 2017/1/7.
+ * @Vesrion 1.0
+ * @Author heyinbo
+ * @Description JobContext——JobContext
  */
 public abstract class JobContext {
     /**

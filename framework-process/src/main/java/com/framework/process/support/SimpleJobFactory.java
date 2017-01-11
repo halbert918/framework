@@ -9,7 +9,6 @@ import org.springframework.context.ApplicationContextAware;
 /**
  * @Vesrion 1.0
  * @Author heyinbo
- * @Date 2015/8/6
  * @Description SimpleJobFactory——根据SimpleJobFactory生成对应的job实例
  */
 public class SimpleJobFactory implements FactoryBean<Job>, ApplicationContextAware {

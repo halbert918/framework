@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * @Vesrion 1.0
  * @Author heyinbo
- * @Date 2015/8/6
  * @Description Node节点名称持有器，方便spring生成bean对象后重新构造nodewapper数据结构
  */
 public class NodeNameHolder implements Serializable {

@@ -4,7 +4,9 @@ import com.framework.process.AbstractNode;
 import com.framework.process.DefaultJobContext;
 
 /**
- * Created by admin on 2017/1/9.
+ * @Vesrion 1.0
+ * @Author heyinbo
+ * @Description
  */
 public class Next2Node extends AbstractNode<DemoDomain, DemoResult> {
 

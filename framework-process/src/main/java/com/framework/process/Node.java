@@ -3,7 +3,6 @@ package com.framework.process;
 /**
  * @Vesrion 1.0
  * @Author heyinbo
- * @Date 2015/8/6
  * @Description Node——Node抽象
  */
 public abstract class Node {

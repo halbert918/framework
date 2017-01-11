@@ -9,7 +9,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * Created by admin on 2017/1/9.
+ * @Vesrion 1.0
+ * @Author heyinbo
+ * @Description
  */
 public class JobTest {
 

@@ -12,7 +12,6 @@ import java.util.List;
 /**
  * @Vesrion 1.0
  * @Author heyinbo
- * @Date 2015/8/6
  * @Description JobContextBuilder——JobContext构造node节点
  */
 public class JobContextBuilder {

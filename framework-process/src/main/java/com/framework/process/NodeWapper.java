@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * @Vesrion 1.0
  * @Author heyinbo
- * @Date 2015/8/6
  * @Description NodeWapper——Node节点包装器，主要构造流程执行数据结构
  */
 public class NodeWapper {

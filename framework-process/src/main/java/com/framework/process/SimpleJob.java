@@ -5,7 +5,6 @@ import com.framework.process.exception.JobException;
 /**
  * @Vesrion 1.0
  * @Author heyinbo
- * @Date 2015/8/6
  * @Description SimpleJob——简单job实现
  */
 public class SimpleJob extends Job {

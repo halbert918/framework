@@ -3,7 +3,9 @@ package com.process.demo.node;
 import com.framework.process.domain.Domain;
 
 /**
- * Created by admin on 2017/1/9.
+ * @Vesrion 1.0
+ * @Author heyinbo
+ * @Description
  */
 public class DemoDomain implements Domain {
 

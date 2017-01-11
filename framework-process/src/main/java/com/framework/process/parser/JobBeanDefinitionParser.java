@@ -19,7 +19,6 @@ import java.util.List;
 /**
  * @Vesrion 1.0
  * @Author heyinbo
- * @Date 2015/8/6
  * @Description 自定义Job解析器，job-context-node
  */
 public class JobBeanDefinitionParser extends AbstractBeanDefinitionParser {
