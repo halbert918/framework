@@ -130,6 +130,7 @@
         <xsd:complexType>
             <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
             <xsd:attribute name="decide" type="xsd:string"></xsd:attribute>
+            <xsd:attribute name="expression" type="xsd:string"></xsd:attribute>
         </xsd:complexType>
     </xsd:element>
 

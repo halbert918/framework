@@ -125,10 +125,11 @@ public class JobBeanDefinitionParser extends AbstractBeanDefinitionParser {
     private static DeciderHolder parseDeciderElement(Element element, ParserContext parserContext) {
         String name = StringUtils.trimWhitespace(element.getAttribute("name"));
         String decide = StringUtils.trimWhitespace(element.getAttribute("decide"));
-        if(!StringUtils.hasLength(decide)) {
-            throw new RuntimeException("配置错误，节点[decision]必须配置[decide]属性");
+        String expression = StringUtils.trimWhitespace(element.getAttribute("expression"));
+        if(!StringUtils.hasLength(decide) && !StringUtils.hasLength(expression)) {
+            throw new RuntimeException("配置错误，节点[decision]必须配置[decide]或者[expression]属性");
         }
-        return new DeciderHolder(name, decide);
+        return new DeciderHolder(name, decide, expression);
     }
 
     /**

@@ -18,7 +18,7 @@ public class JobTest {
     public static void main(String[] args) {
         DemoDomain domain = new DemoDomain();
         domain.setId("123456");
-        domain.setName("test domian");
+        domain.setName("test");
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext-demo.xml");
         SimpleJobFactory factoryBean = ctx.getBean("&simpleJob", SimpleJobFactory.class);

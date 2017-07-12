@@ -72,6 +72,7 @@ public class JobContextBuilder {
             decider = new NodeExecutionDecider();
             decider.setDecide(deciderHolder.getDecide());
             decider.setId(deciderHolder.getName());
+            decider.setExpression(deciderHolder.getExpression());
         }
         return decider;
     }
