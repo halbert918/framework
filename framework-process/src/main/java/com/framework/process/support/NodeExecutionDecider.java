@@ -59,16 +59,23 @@ public class NodeExecutionDecider {
             decide = exp.getValue(ect, String.class);
         }
 
-        Map<Object, Object> params = jobContext.getParams();
-        if(params.containsKey(decide)) {
-            Object value = params.get(decide);
-            for (NodeWapper nodeWapper : prevNodeWapper.getNodeWappers()) {
-                Node node = nodeWapper.getNode();
-                if(value.equals(node.getName())) {
-                    return nodeWapper;
-                }
+        for (NodeWapper nodeWapper : prevNodeWapper.getNodeWappers()) {
+            Node node = nodeWapper.getNode();
+            if(decide.equals(node.getName())) {
+                return nodeWapper;
             }
         }
+
+//        Map<Object, Object> params = jobContext.getParams();
+//        if(params.containsKey(decide)) {
+//            Object value = params.get(decide);
+//            for (NodeWapper nodeWapper : prevNodeWapper.getNodeWappers()) {
+//                Node node = nodeWapper.getNode();
+//                if(value.equals(node.getName())) {
+//                    return nodeWapper;
+//                }
+//            }
+//        }
         return null;
     }
 
