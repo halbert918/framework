@@ -33,16 +33,30 @@ public class SimpleJobFactory implements FactoryBean<Job>, ApplicationContextAwa
         if(null == job) {
             throw new RuntimeException("初始化[Job]实例失败...");
         }
-        JobContext jobContext = job.getJobContext();
+//        JobContext jobContext = job.getJobContext();
+//        if(null == jobContextBuilder) {
+//            jobContextBuilder = new JobContextBuilder();
+//            jobContextBuilder.setApplicationContext(applicationContext);
+//            jobContextBuilder.setNodeNameHolder(nodeNameHolder);
+//            jobContext = jobContextBuilder.build(jobContext);
+//            jobContext.setJob(job);
+//        }
+//        job.setJobContext(jobContext);
+        job.setJobFactory(this);
+        return job;
+    }
+
+    public JobContext buildContext() {
+        JobContext jobContext = null;
         if(null == jobContextBuilder) {
             jobContextBuilder = new JobContextBuilder();
-            jobContextBuilder.setApplicationContext(applicationContext);
-            jobContextBuilder.setNodeNameHolder(nodeNameHolder);
-            jobContext = jobContextBuilder.build(jobContext);
-            jobContext.setJob(job);
         }
+        jobContextBuilder.setApplicationContext(applicationContext);
+        jobContextBuilder.setNodeNameHolder(nodeNameHolder);
+        jobContext = jobContextBuilder.build(jobContext);
+        jobContext.setJob(job);
         job.setJobContext(jobContext);
-        return job;
+        return jobContext;
     }
 
     public Class<?> getObjectType() {

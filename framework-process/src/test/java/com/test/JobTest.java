@@ -23,22 +23,14 @@ public class JobTest {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext-demo.xml");
         SimpleJobFactory factoryBean = ctx.getBean("&simpleJob", SimpleJobFactory.class);
         SimpleJob simpleJob = ctx.getBean("simpleJob", SimpleJob.class);
-        DefaultJobContext<DemoDomain, DemoResult> context = (DefaultJobContext<DemoDomain, DemoResult>)simpleJob.getJobContext();
-        context.buildParam("decider", "decider")
-                .buildParam("okey", "okey");
-        context.setDomain(domain);
-        simpleJob.execute();
-        DemoResult result = context.getResult();
+        DemoResult result = (DemoResult) simpleJob.execute(domain);
         System.out.println("job执行状态status:" + result.getStatus());
 
 
         SimpleJob simpleJob1 = ctx.getBean("simpleJob1", SimpleJob.class);
-        DefaultJobContext<DemoDomain, DemoResult> context1 = (DefaultJobContext<DemoDomain, DemoResult>)simpleJob1.getJobContext();
         domain.setName("job1 test domain");
-        context1.setDomain(domain);
-        simpleJob1.execute();
+        DemoResult result1 = (DemoResult) simpleJob1.execute(domain);
 
-        DemoResult result1 = context1.getResult();
         System.out.println("job1执行状态status:" + result1.getStatus());
     }
 

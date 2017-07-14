@@ -42,6 +42,11 @@ public class NodeWapper {
         this.node = node;
     }
 
+    public void setNode(Node node, boolean isRoot) {
+        this.node = node;
+        node.setRoot(isRoot);
+    }
+
     public List<NodeWapper> getNodeWappers() {
         return nodeWappers;
     }

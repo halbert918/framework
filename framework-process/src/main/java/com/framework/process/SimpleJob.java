@@ -1,6 +1,8 @@
 package com.framework.process;
 
+import com.framework.process.domain.Domain;
 import com.framework.process.exception.JobException;
+import com.framework.process.result.Result;
 
 /**
  * @Vesrion 1.0
@@ -9,8 +11,9 @@ import com.framework.process.exception.JobException;
  */
 public class SimpleJob extends Job {
 
-    public void execute() {
-        JobContext context = getJobContext();
+    public Result execute(Domain domain) {
+        DefaultJobContext context = (DefaultJobContext) getJobContext();
+        context.setDomain(domain);
         try {
             while (!context.isDone()) {
                 context.invoke();
@@ -18,5 +21,6 @@ public class SimpleJob extends Job {
         } catch (Exception e) {
             throw new JobException("执行任务[" + this.getId() + "]发生异常...", e);
         }
+        return context.getResult();
     }
 }
