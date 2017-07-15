@@ -33,7 +33,7 @@ public abstract class Job {
      */
     public abstract Result execute(Domain domain);
 
-    public JobContext getJobContext() {
+    protected JobContext getJobContext() {
         return jobFactory.buildContext();
     }
 

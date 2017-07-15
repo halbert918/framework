@@ -17,6 +17,10 @@ public class SimpleJobFactory implements FactoryBean<Job>, ApplicationContextAwa
      */
     private Job job;
     /**
+     * context类型
+     */
+    private String contextClass;
+    /**
      * Node节点持有器，以便spring解析完成后构造流程节点
      */
     private NodeNameHolder nodeNameHolder;
@@ -28,20 +32,15 @@ public class SimpleJobFactory implements FactoryBean<Job>, ApplicationContextAwa
      * applicationContext
      */
     protected ApplicationContext applicationContext;
+    /**
+     * 类加载器
+     */
+    private ClassLoader classLoader;
 
     public Job getObject() throws Exception {
         if(null == job) {
             throw new RuntimeException("初始化[Job]实例失败...");
         }
-//        JobContext jobContext = job.getJobContext();
-//        if(null == jobContextBuilder) {
-//            jobContextBuilder = new JobContextBuilder();
-//            jobContextBuilder.setApplicationContext(applicationContext);
-//            jobContextBuilder.setNodeNameHolder(nodeNameHolder);
-//            jobContext = jobContextBuilder.build(jobContext);
-//            jobContext.setJob(job);
-//        }
-//        job.setJobContext(jobContext);
         job.setJobFactory(this);
         return job;
     }
@@ -50,9 +49,9 @@ public class SimpleJobFactory implements FactoryBean<Job>, ApplicationContextAwa
         JobContext jobContext = null;
         if(null == jobContextBuilder) {
             jobContextBuilder = new JobContextBuilder();
+            jobContextBuilder.setApplicationContext(applicationContext);
+            jobContextBuilder.setNodeNameHolder(nodeNameHolder);
         }
-        jobContextBuilder.setApplicationContext(applicationContext);
-        jobContextBuilder.setNodeNameHolder(nodeNameHolder);
         jobContext = jobContextBuilder.build(jobContext);
         jobContext.setJob(job);
         job.setJobContext(jobContext);
@@ -85,5 +84,13 @@ public class SimpleJobFactory implements FactoryBean<Job>, ApplicationContextAwa
 
     public void setNodeNameHolder(NodeNameHolder nodeNameHolder) {
         this.nodeNameHolder = nodeNameHolder;
+    }
+
+    public String getContextClass() {
+        return contextClass;
+    }
+
+    public void setContextClass(String contextClass) {
+        this.contextClass = contextClass;
     }
 }
