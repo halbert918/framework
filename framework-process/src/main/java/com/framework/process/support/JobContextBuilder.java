@@ -32,7 +32,7 @@ public class JobContextBuilder {
         }
         //构建NodeWapper
         NodeWapper rootWapper = new NodeWapper();
-        Object obj = applicationContext.getBean(nodeNameHolder.getNodeName());
+        Object obj = applicationContext.getBean(nodeNameHolder.getClassName());
         rootWapper.setNode(Node.class.cast(obj), true);
         rootWapper.setDecider(buildDecider(nodeNameHolder.getDeciderHolder()));
         buildChildrenWapper(rootWapper, nodeNameHolder.getNodeHolders());
@@ -51,7 +51,7 @@ public class JobContextBuilder {
         }
         List<NodeWapper> wappers = new ArrayList<NodeWapper>();
         for(NodeNameHolder nodeHolder : list) {
-            Node node = (Node) applicationContext.getBean(nodeHolder.getNodeName());
+            Node node = (Node) applicationContext.getBean(nodeHolder.getClassName());
             NodeWapper nodeWapper = new NodeWapper();
             nodeWapper.setNode(node);
             nodeWapper.setDecider(buildDecider(nodeHolder.getDeciderHolder()));
