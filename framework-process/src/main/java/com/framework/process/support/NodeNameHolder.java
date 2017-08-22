@@ -17,7 +17,7 @@ public class NodeNameHolder implements Serializable {
     /**
      * className class全限名
      */
-    private String className;
+    private String beanName;
     /**
      * 是否根节点
      */
@@ -29,13 +29,13 @@ public class NodeNameHolder implements Serializable {
 
     private List<NodeNameHolder> nodeHolders = new ArrayList<NodeNameHolder>();
 
-    public NodeNameHolder(String nodeName, String className) {
-        this(nodeName, className, false);
+    public NodeNameHolder(String nodeName, String beanName) {
+        this(nodeName, beanName, false);
     }
 
-    public NodeNameHolder(String nodeName, String className, boolean isRoot) {
+    public NodeNameHolder(String nodeName, String beanName, boolean isRoot) {
         this.nodeName = nodeName;
-        this.className = className;
+        this.beanName = beanName;
         this.isRoot = isRoot;
     }
 
@@ -55,12 +55,12 @@ public class NodeNameHolder implements Serializable {
         this.nodeName = nodeName;
     }
 
-    public String getClassName() {
-        return className;
+    public String getBeanName() {
+        return beanName;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setBeanName(String beanName) {
+        this.beanName = beanName;
     }
 
     public void addChild(NodeNameHolder nodeHolder) {
