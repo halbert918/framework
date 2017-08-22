@@ -58,6 +58,7 @@ public class JobBeanDefinitionParser extends AbstractBeanDefinitionParser {
         String contextClassName = contextElement.getAttribute("class");
         if(StringUtils.hasLength(contextClassName)) {
             contextDefinition.setBeanClassName(contextClassName);
+            jobFactory.addPropertyValue("contextClass", contextClassName);
         }
         jobDefinition.getPropertyValues().addPropertyValue("jobContext", contextDefinition);
         //add job beanDefinition property
