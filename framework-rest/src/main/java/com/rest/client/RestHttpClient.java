@@ -1,6 +1,6 @@
 package com.rest.client;
 
-import com.rest.common.RestConstant;
+import com.rest.common.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -15,6 +15,7 @@ import org.springframework.web.util.UriTemplate;
 import org.springframework.web.util.UriTemplateHandler;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Map;
 import java.util.Set;
 
@@ -26,10 +27,13 @@ import java.util.Set;
  */
 public class RestHttpClient {
 
-
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private CustomRestTemplate restTemplate;
+    /**
+     * rest配置
+     */
+    private IConfig config;
 
     /**
      * 初始化client
@@ -39,12 +43,23 @@ public class RestHttpClient {
     }
 
     public RestHttpClient(int connectTimeout, int readTimeout) {
-        Assert.isTrue(connectTimeout > 0, "请求连接时间不能小于0...");
-        Assert.isTrue(readTimeout > 0, "Socket读写超时时间不能小于0...");
+        if (null == config) {
+            config = getDefaultConfig();
+        }
         RestTemplateBuilder restTemplateBuilder = RestTemplateBuilder.create();
-        restTemplate = restTemplateBuilder.build(connectTimeout, readTimeout);
+        restTemplate = restTemplateBuilder.build(config, connectTimeout, readTimeout);
     }
 
+    /**
+     * 获取默认的配置
+     * @return
+     * @throws URISyntaxException
+     */
+    private IConfig getDefaultConfig() {
+        IResourceLoader filesystemLoader = new ClasspathResourceLoader();
+        final IConfig config = new RestConfig(filesystemLoader);
+        return config;
+    }
 
     /////////////////////////////////////////////////////GET////////////////////////////////////////////////////////////
     /**

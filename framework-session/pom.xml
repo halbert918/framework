@@ -15,6 +15,16 @@
     <dependencies>
 
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.13</version>
@@ -26,7 +36,11 @@
             <version>1.7.5</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.esotericsoftware.kryo</groupId>
+            <artifactId>kryo</artifactId>
+            <version>2.24.0</version>
+        </dependency>
 
     </dependencies>
 
