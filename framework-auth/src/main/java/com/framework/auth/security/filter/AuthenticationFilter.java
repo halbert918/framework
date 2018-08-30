@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.Assert;
@@ -39,10 +40,9 @@ public class AuthenticationFilter extends OncePerRequestFilter implements Initia
 //        logger.info(">>The request authentication beginning. request url: {}", request.getRequestURI());
         Authentication authentication = extractorManager.extractAuthentication(request);
         if (authentication == null) {
-//            logger.info(">>The request authentication failure.");
+            logger.info(">>The request authentication failure.");
             response.addHeader("WWW-Authenticate", "Bearer error=\"invalid_token\" description=\"not support the authentication method\"");
-            // TODO 默认不做任何处理，兼容之前未传入accessToken的接口
-            // throw new AuthenticationServiceException("不支持的认证模式.");
+             throw new AuthenticationServiceException("不支持的认证模式.");
         }
 
         //authentication 认证
@@ -54,7 +54,7 @@ public class AuthenticationFilter extends OncePerRequestFilter implements Initia
                 SecurityContextHolder.getContext().setAuthentication(fullyAuthentication);
 
             } catch (Exception e) {
-//                logger.error(">>The request authentication error.", e);
+                logger.error(">>The request authentication error.", e);
                 response.addHeader("WWW-Authenticate", "Bearer error=\"invalid_token\" description=\"" + e.getMessage() + "\"");
             }
         }
