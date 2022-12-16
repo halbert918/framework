@@ -22,7 +22,7 @@
         <framework>1.0-SNAPSHOT</framework>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <slf4j.version>1.6.1</slf4j.version>
-        <spring.maven.artifact.version>4.2.1.RELEASE</spring.maven.artifact.version>
+        <spring.maven.artifact.version>5.2.20.RELEASE</spring.maven.artifact.version>
         <junit.version>4.10</junit.version>
         <logback.version>1.0.6</logback.version>
     </properties>
